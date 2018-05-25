@@ -1782,7 +1782,7 @@ Transform:
   m_GameObject: {fileID: 1244760467543844}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: -15, y: 0, z: 12}
-  m_LocalScale: {x: 1, y: 1, z: 0.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4191883865569864}
   - {fileID: 4177240382017386}
@@ -1961,54 +1961,69 @@ AudioSource:
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
-    - serializedVersion: 2
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 1
       value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   panLevelCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
@@ -2029,6 +2044,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114009100225796694
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2040,17 +2056,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01897ae0afb46794d88a3dc2d9386348, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  species: Cow
-  wanderZone: 10
-  dominance: 2
-  awareness: 15
-  scent: 0
-  stamina: 15
-  power: 0
-  toughness: 35
-  agression: 0
-  territorial: 0
-  stealthy: 0
   idleStates:
   - stateName: Nothing
     animationBool: 
@@ -2075,7 +2080,25 @@ MonoBehaviour:
     turnSpeed: 20
   attackingStates: []
   deathStates: []
+  species: Cow
+  wanderZone: 10
+  dominance: 2
+  awareness: 15
+  scent: 0
+  stamina: 15
+  power: 0
+  toughness: 35
+  agression: 0
+  attackSpeed: 0.5
+  territorial: 0
+  stealthy: 0
+  constainedToWanderZone: 0
+  nonAgressiveTowards: []
+  logChanges: 0
   showGizmos: 1
+  drawWanderRange: 1
+  drawScentRange: 1
+  drawAwarenessRange: 1
 --- !u!114 &114332741007667790
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2088,19 +2111,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animalSound: {fileID: 8300000, guid: c244c3141607649918f54beb8a706957, type: 3}
-  animalSoundS: {fileID: 82796179080257434}
   walking: {fileID: 0}
-  walkingS: {fileID: 0}
   eating: {fileID: 8300000, guid: 39081a8f8fcfc43319c8f687e415712a, type: 3}
-  eatingS: {fileID: 82796179080257434}
   running: {fileID: 8300000, guid: 7a8ecf224348340ea938d9a55928756b, type: 3}
-  runningS: {fileID: 82796179080257434}
   attacking: {fileID: 0}
-  attackingS: {fileID: 0}
   death: {fileID: 0}
-  deathS: {fileID: 0}
   sleeping: {fileID: 0}
-  sleepingS: {fileID: 0}
 --- !u!114 &114962664476116158
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2121,9 +2137,11 @@ SkinnedMeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 7c3799f010ff8444da31e10ff7bb27fe, type: 2}
   m_StaticBatchInfo:
@@ -2136,6 +2154,7 @@ SkinnedMeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
