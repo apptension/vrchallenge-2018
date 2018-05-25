@@ -3941,7 +3941,7 @@ GameObject:
   - component: {fileID: 1944240717}
   - component: {fileID: 1944240716}
   m_Layer: 0
-  m_Name: CowController
+  m_Name: CowsSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
