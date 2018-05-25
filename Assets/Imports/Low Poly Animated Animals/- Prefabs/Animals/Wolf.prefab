@@ -2472,7 +2472,7 @@ GameObject:
   - component: {fileID: 114905693314452548}
   m_Layer: 0
   m_Name: Wolf
-  m_TagString: Untagged
+  m_TagString: Wolf
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4993,7 +4993,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1555847620765010}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: -0.00000035762784}
-  m_LocalPosition: {x: -5, y: 0, z: 7}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4504602657265120}
@@ -8861,54 +8861,69 @@ AudioSource:
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
-    - serializedVersion: 2
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
       time: 1
       value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
   panLevelCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
   reverbZoneMixCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - serializedVersion: 2
+    - serializedVersion: 3
       time: 0
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
@@ -8929,6 +8944,7 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114891851917860678
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8941,19 +8957,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animalSound: {fileID: 8300000, guid: e4aa6f48a36014dcc9d111bf13e6c85f, type: 3}
-  animalSoundS: {fileID: 82399463388659280}
   walking: {fileID: 0}
-  walkingS: {fileID: 0}
   eating: {fileID: 0}
-  eatingS: {fileID: 0}
   running: {fileID: 0}
-  runningS: {fileID: 0}
   attacking: {fileID: 0}
-  attackingS: {fileID: 0}
   death: {fileID: 0}
-  deathS: {fileID: 0}
   sleeping: {fileID: 0}
-  sleepingS: {fileID: 0}
 --- !u!114 &114905693314452548
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -8965,17 +8974,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01897ae0afb46794d88a3dc2d9386348, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  species: Wolf
-  wanderZone: 20
-  dominance: 5
-  awareness: 50
-  scent: 40
-  stamina: 30
-  power: 15
-  toughness: 20
-  agression: 100
-  territorial: 0
-  stealthy: 0
   idleStates:
   - stateName: Nothing
     animationBool: 
@@ -9004,7 +9002,25 @@ MonoBehaviour:
   deathStates:
   - stateName: Dead
     animationBool: isDead
+  species: Wolf
+  wanderZone: 7.96
+  dominance: 5
+  awareness: 50
+  scent: 40
+  stamina: 30
+  power: 15
+  toughness: 20
+  agression: 0
+  attackSpeed: 0
+  territorial: 0
+  stealthy: 0
+  constainedToWanderZone: 0
+  nonAgressiveTowards: []
+  logChanges: 0
   showGizmos: 1
+  drawWanderRange: 1
+  drawScentRange: 1
+  drawAwarenessRange: 1
 --- !u!137 &137321331765734978
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
@@ -9014,9 +9030,11 @@ SkinnedMeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 1d5d0013b0c06469a8598dd66e4f5b6e, type: 2}
   m_StaticBatchInfo:
@@ -9029,6 +9047,7 @@ SkinnedMeshRenderer:
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
