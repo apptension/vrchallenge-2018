@@ -12,7 +12,13 @@ public class GameManager : MonoBehaviour
 	public int level = 3;                                  //Current level number, expressed in game as "Day 1".
 	public Component anchor;
     public GameObject UFOPrefab;
+    public GameObject WolfPrefab;
     private bool setAnchor = false;
+
+    public event EventHandler GameStarted;
+    protected virtual void OnGameStarted() {
+        this.GameStarted(this, null);
+    }
 	
 	//Awake is always called before any Start functions
 	void Awake()
@@ -60,8 +66,12 @@ public class GameManager : MonoBehaviour
 
     private void StartGame()
     {
-        GameObject UFO = Instantiate(UFOPrefab);
-        UFO.transform.parent = GameManager.instance.anchor.transform;
-        UFO.transform.position = new Vector3(0, 0, 0);
+        GameObject ufo = Instantiate(UFOPrefab);
+        ufo.transform.position = GameManager.instance.anchor.transform.position;
+
+        GameObject wolf = Instantiate(WolfPrefab);
+        wolf.transform.position = GameManager.instance.anchor.transform.position;
+
+        this.OnGameStarted();
     }
 }

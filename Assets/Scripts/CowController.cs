@@ -22,18 +22,20 @@ public class CowController : MonoBehaviour {
     }
 
     void SpawnCow() {
-        var cowObject = Instantiate(this.CowPrefab, this._GetRandomSpawnPosition(), this._GetRandomRotation());
+        var position = GameManager.instance.anchor.transform.position + this._GetRandomSpawnPosition();
+        Instantiate(this.CowPrefab, position, this._GetRandomRotation());
     }
 
 	// Use this for initialization
 	void Start () {
-        for (int i = 0; i < this.m_cowsCount; i++) {
+        GameManager.instance.GameStarted += this.SpawnCows;
+	}
+
+    void SpawnCows(object sender, System.EventArgs args) {
+        Debug.Log("COWS SPAWNED");
+        for (int i = 0; i < this.m_cowsCount; i++)
+        {
             this.SpawnCow();
         }
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    }
 }
