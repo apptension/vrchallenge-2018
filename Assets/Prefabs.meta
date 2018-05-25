@@ -1,9 +1,16 @@
 fileFormatVersion: 2
 <<<<<<< HEAD
+<<<<<<< HEAD
 guid: ffa4080ba04e147879edd16d80585ebd
 =======
 guid: 5197880f0717647f89d965dc825e4ecb
 >>>>>>> 71fb66fc2690d7cff2670f40942edd32e8d47083
+=======
+guid: 5197880f0717647f89d965dc825e4ecb
+=======
+guid: 9bc9a0992ebd74d29a92aa0e53cf6c14
+>>>>>>> Add RunAwayController for cows
+>>>>>>> Add RunAwayController for cows
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
