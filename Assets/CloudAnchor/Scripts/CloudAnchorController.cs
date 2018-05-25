@@ -42,7 +42,7 @@ namespace GoogleARCore.Examples.CloudAnchor
         /// are many ways to share this data and this not part of the ARCore Cloud Anchors API surface.
         /// </summary>
         public RoomSharingServer RoomSharingServer;
-
+        
         /// <summary>
         /// A controller for managing UI associated with the example.
         /// </summary>
@@ -177,6 +177,7 @@ namespace GoogleARCore.Examples.CloudAnchor
                         TrackableHitFlags.PlaneWithinPolygon, out hit))
                 {
                     m_LastPlacedAnchor = hit.Trackable.CreateAnchor(hit.Pose);
+                    GameManager.instance.anchor = m_LastPlacedAnchor;
                 }
             }
             else
@@ -190,15 +191,15 @@ namespace GoogleARCore.Examples.CloudAnchor
 
             if (m_LastPlacedAnchor != null)
             {
-                // Instantiate Andy model at the hit pose.
-                var andyObject = Instantiate(_GetAndyPrefab(), m_LastPlacedAnchor.transform.position,
-                    m_LastPlacedAnchor.transform.rotation);
+                //// Instantiate Andy model at the hit pose.
+                //var andyObject = Instantiate(_GetAndyPrefab(), m_LastPlacedAnchor.transform.position,
+                //    m_LastPlacedAnchor.transform.rotation);
 
-                // Compensate for the hitPose rotation facing away from the raycast (i.e. camera).
-                andyObject.transform.Rotate(0, k_ModelRotation, 0, Space.Self);
+                //// Compensate for the hitPose rotation facing away from the raycast (i.e. camera).
+                //andyObject.transform.Rotate(0, k_ModelRotation, 0, Space.Self);
 
-                // Make Andy model a child of the anchor.
-                andyObject.transform.parent = m_LastPlacedAnchor.transform;
+                //// Make Andy model a child of the anchor.
+                //andyObject.transform.parent = m_LastPlacedAnchor.transform;
 
                 // Save cloud anchor.
                 _HostLastPlacedAnchor();
