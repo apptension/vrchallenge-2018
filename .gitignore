@@ -1,0 +1,14 @@
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+.vs/
+*/Library/
+*/Temp/
+*/Builds/
+*.DS_Store
+[Bb]uild
