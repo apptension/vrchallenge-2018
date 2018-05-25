@@ -140,10 +140,8 @@ namespace GoogleARCore.HelloAR
 
             if (Frame.Raycast(touch.position.x, touch.position.y, raycastFilter, out hit))
             {
-                // var andyObject = Instantiate(AndyAndroidPrefab, hit.Pose.position, hit.Pose.rotation);
-                AndyAndroidPrefab.transform.position = hit.Pose.position;
-                AndyAndroidPrefab.transform.rotation = hit.Pose.rotation;
-
+                var andyObject = Instantiate(AndyAndroidPrefab, hit.Pose.position, hit.Pose.rotation);
+               
                 // Create an anchor to allow ARCore to track the hitpoint as understanding of the physical
                 // world evolves.
                 var anchor = hit.Trackable.CreateAnchor(hit.Pose);
@@ -156,11 +154,11 @@ namespace GoogleARCore.HelloAR
                     cameraPositionSameY.y = hit.Pose.position.y;
 
                     // Have Andy look toward the camera respecting his "up" perspective, which may be from ceiling.
-                    AndyAndroidPrefab.transform.LookAt(cameraPositionSameY, AndyAndroidPrefab.transform.up);
+                    andyObject.transform.LookAt(cameraPositionSameY, andyObject.transform.up);
                 }
 
                 // Make Andy model a child of the anchor.
-                AndyAndroidPrefab.transform.parent = anchor.transform;
+                andyObject.transform.parent = anchor.transform;
             }
         }
 
