@@ -3,6 +3,7 @@ using System.Collections;
 using GoogleARCore;
 
 using System.Collections.Generic;       //Allows us to use Lists. 
+using System;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class GameManager : MonoBehaviour
 	public static GameManager instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.                    //Store a reference to our BoardManager which will set up the level.
 	public int level = 3;                                  //Current level number, expressed in game as "Day 1".
 	public Component anchor;
+    public GameObject UFOPrefab;
+    private bool setAnchor = false;
 	
 	//Awake is always called before any Start functions
 	void Awake()
@@ -45,6 +48,20 @@ public class GameManager : MonoBehaviour
 	//Update is called every frame.
 	void Update()
 	{
-		Debug.Log(level);
+        if (GameManager.instance.anchor == null || setAnchor)
+        {
+            return;
+        }
+
+        setAnchor = true;
+        //start game
+        StartGame();
 	}
+
+    private void StartGame()
+    {
+        GameObject UFO = Instantiate(UFOPrefab);
+        UFO.transform.parent = GameManager.instance.anchor.transform;
+        UFO.transform.position = new Vector3(0, 0, 0);
+    }
 }

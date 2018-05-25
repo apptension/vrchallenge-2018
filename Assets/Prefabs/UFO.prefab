@@ -35,6 +35,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4680520359876480}
   - component: {fileID: 95863132196755502}
+  - component: {fileID: 114258345032453802}
   m_Layer: 0
   m_Name: UFO
   m_TagString: Untagged
@@ -419,8 +420,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1086815379904488}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 47.2}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: 0, y: 0, z: -1.61}
+  m_LocalScale: {x: 0.005, y: 0.005, z: 0.005}
   m_Children:
   - {fileID: 4285837933282390}
   - {fileID: 4857780204434606}
@@ -926,6 +927,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ufoMaterial: {fileID: 2100000, guid: 4e8b5ba641535457dbea5597c6e65459, type: 2}
+--- !u!114 &114258345032453802
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1086815379904488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 903a10d7f4726473fa709405fa38dedc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114674109523230190
 MonoBehaviour:
   m_ObjectHideFlags: 1
