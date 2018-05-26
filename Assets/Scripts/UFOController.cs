@@ -13,7 +13,9 @@ using Input = GoogleARCore.InstantPreviewInput;
 
 public class UFOController : MonoBehaviour {
 
-    private Pose target;
+    private Pose? target = null;
+    public GameObject UFOProjectorPrefab;
+    private bool isCatching = false;
 
 	// Update is called once per frame
 	void Update ()
@@ -23,10 +25,26 @@ public class UFOController : MonoBehaviour {
         {
             target = hit.Pose;
         }
-
-        if (!target.Equals(null)) {
-            float step = 0.2f * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, target.position, step);
+	}
+	private void FixedUpdate()
+	{
+        if (target != null && !isCatching)
+        {
+            float step = 0.15f * Time.deltaTime;
+            transform.position = Vector3.MoveTowards(transform.position, ((Pose)target).position, step);
         }
 	}
+
+    public void CatchAnimal()
+    {
+        GameObject ufoProjector = Instantiate(UFOProjectorPrefab, transform);
+        Destroy(ufoProjector, 5f);
+        Invoke("OnDestroyUFOPRoject", 3f);
+    }
+
+    private void OnDestroyUFOPRoject()
+    {
+        Debug.Log("KURWA NIE DZIAŁA");
+        isCatching = true;
+    }
 }
