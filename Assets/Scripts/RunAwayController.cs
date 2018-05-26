@@ -15,13 +15,16 @@ public class RunAwayController : MonoBehaviour {
 		
 	}
 
+    private void OnTriggerEnter(Collider other)
+    {
+        this.GetComponentInParent<AnimationControl>().SetAnimation("isRunning");
+    }
+
     void OnTriggerStay(Collider other) {
         if (other.tag == "Wolf") {
-            Debug.Log("Oh no! It's the wolf!");
-
             var cowTransform = transform.parent;
-            this.GetComponentInParent< AnimationControl > ().SetAnimation("isRunning");
             var runDirection = (cowTransform.position - other.transform.position).normalized;
+            runDirection.y = 0;
 
             cowTransform.Translate(runDirection * this.runSpeed * Time.deltaTime, Space.World);
             cowTransform.LookAt(runDirection + cowTransform.position);
