@@ -82,7 +82,7 @@ namespace GoogleARCore.Examples.CloudAnchor
         /// </summary>
         public void Start()
         {
-            IPAddressText.text = "My IP Address: " + Network.player.ipAddress;
+            //IPAddressText.text = "My IP Address: " + Network.player.ipAddress;
         }
 
         /// <summary>
@@ -182,6 +182,16 @@ namespace GoogleARCore.Examples.CloudAnchor
             ResolveAnchorModeButton.interactable = true;
             SnackbarText.text = "The anchor was successfully resolved.";
             InputRoot.SetActive(false);
+        }
+
+        public void ShowUFOSuccess() 
+        {
+            SnackbarText.text = "Playing as UFO!";
+        }
+
+        public void ShowBodyguardSuccess() 
+        {
+            SnackbarText.text = "Playing as Bodyguard!";
         }
 
         /// <summary>

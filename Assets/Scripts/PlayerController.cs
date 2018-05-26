@@ -6,24 +6,38 @@ public class PlayerController : NetworkBehaviour
 {
     private Component m_localAnchor;
 
+    [SyncVar]
+    public PlayerType m_type;
+
+    private void Start()
+    {
+        if (isLocalPlayer) {
+            if (isServer)
+            {
+                m_type = PlayerType.UFO;
+            }
+            else
+            {
+                m_type = PlayerType.Bodyguard;
+            }
+        }
+    }
+
     void Update()
     {
-        if (!isLocalPlayer)
+        if (m_type == PlayerType.UFO && GameManager.instance.PlayerUFO != this.gameObject)
         {
+            
+            GameManager.instance.PlayerUFO = this.gameObject;
+        }
+
+        if (m_type == PlayerType.Bodyguard && GameManager.instance.PlayerBodyguard != this.gameObject)
+        {
+            GameManager.instance.PlayerBodyguard = this.gameObject;
+        }
+
+        if (!isLocalPlayer) {
             return;
         }
-
-        if (m_localAnchor != GameManager.instance.anchor) {
-            m_localAnchor = GameManager.instance.anchor;
-
-            transform.position = m_localAnchor.transform.position;
-            transform.rotation = m_localAnchor.transform.rotation;
-        }
-
-        var m_x = Input.GetAxis("Horizontal") * Time.deltaTime * 150.0f;
-        var m_z = Input.GetAxis("Vertical") * Time.deltaTime * 3.0f;
-
-        transform.Rotate(0, m_x, 0);
-        transform.Translate(0, 0, m_z);
     }
 }

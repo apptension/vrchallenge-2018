@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
-public class CowController : MonoBehaviour {
+public class CowSpawner : NetworkBehaviour {
     public GameObject CowPrefab;
-    public float scale;
     public float spawnRadius;
 
     private int m_cowsCount = 5;
@@ -26,7 +26,7 @@ public class CowController : MonoBehaviour {
         var cowObject = Instantiate(this.CowPrefab, new Vector3(0, 0, 0), this._GetRandomRotation());
         cowObject.transform.parent = GameManager.instance.anchor.transform;
         cowObject.transform.localPosition = this._GetRandomSpawnPosition();
-
+        NetworkServer.Spawn(cowObject);
     }
 
 	// Use this for initialization
