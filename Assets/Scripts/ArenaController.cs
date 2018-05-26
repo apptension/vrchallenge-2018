@@ -23,15 +23,15 @@ public class ArenaController : MonoBehaviour {
     void FixedUpdate () {
         if (m_isAnchored) return;
 
-        var center = PointerRaycast.GetInstance().CurrentTarget.Value;
+        var center = PointerRaycast.GetInstance().CurrentTarget;
 
         if (center != null) {
             if (m_Arena != null)
             {
-                m_Arena.transform.position = (Vector3)center;
+                m_Arena.transform.position = center.Value;
             }
             else {
-                m_Arena = Instantiate(arenaPrefab, center, Quaternion.identity);
+                m_Arena = Instantiate(arenaPrefab, center.Value, Quaternion.identity);
             }
         }
 	}
