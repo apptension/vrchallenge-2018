@@ -17,13 +17,4 @@ public class SnackbarCanvasController : MonoBehaviour {
 		
 	}
 
-    public void ShowUFOSuccess()
-    {
-        SnackbarText.text = "Playing as UFO!";
-    }
-
-    public void ShowBodyguardSuccess()
-    {
-        SnackbarText.text = "Playing as Bodyguard!";
-    }
 }
