@@ -150,7 +150,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.google.ar.core.examples.unity.helloar
+    Android: com.apptension.vr2018
     Standalone: com.google.ar.core.examples.unity.helloar
     Tizen: com.Company.ProductName
     iOS: com.google.ar.core.examples.unity.helloar
@@ -744,9 +744,9 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.1
   apiCompatibilityLevel: 2
-  cloudProjectId: 8e140a84-de09-420f-b63c-3f1e1ea95343
+  cloudProjectId: e4662ee2-33ee-40b9-9920-5029f97bed47
   projectName: vrchallenge2018
-  organizationId: xeor
+  organizationId: unity_cruingtouu4mug
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

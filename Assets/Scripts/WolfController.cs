@@ -24,6 +24,11 @@ public class WolfController : NetworkBehaviour
             return;
         }
 
+        if (GameManager.instance.anchor != null)
+        {
+            transform.parent = GameManager.instance.anchor.transform;
+        }
+
         TrackableHit hit;
         if (Frame.Raycast(360, 560, TrackableHitFlags.PlaneWithinPolygon, out hit))
         {
@@ -66,5 +71,16 @@ public class WolfController : NetworkBehaviour
             return;
         }
         animationControl.SetAnimationIdle();
+    }
+
+    private void Start()
+    {
+        GameManager.instance.PlayerBodyguard = this.gameObject;
+        GameManager.instance.GameStarted += HandleGameStarted;
+    }
+
+    void HandleGameStarted(object sender, System.EventArgs e)
+    {
+        transform.localPosition = new Vector3();
     }
 }

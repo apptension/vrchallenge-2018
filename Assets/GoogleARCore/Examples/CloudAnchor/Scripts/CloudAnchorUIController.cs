@@ -184,16 +184,6 @@ namespace GoogleARCore.Examples.CloudAnchor
             InputRoot.SetActive(false);
         }
 
-        public void ShowUFOSuccess() 
-        {
-            SnackbarText.text = "Playing as UFO!";
-        }
-
-        public void ShowBodyguardSuccess() 
-        {
-            SnackbarText.text = "Playing as Bodyguard!";
-        }
-
         /// <summary>
         /// Sets the room number in the UI.
         /// </summary>

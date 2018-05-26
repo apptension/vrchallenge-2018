@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
 using GoogleARCore;
 using GoogleARCore.CrossPlatform;
 using GoogleARCore.Examples.Common;
@@ -12,16 +11,18 @@ using UnityEngine.UI;
 using Input = GoogleARCore.InstantPreviewInput;
 #endif
 
-public class CloudAnchorManager : NetworkBehaviour {
-
-    [SyncVar]
+public class CloudAnchorManager : MonoBehaviour {
+    
     public string arenaCloudAnchorId;
+
+    public GameObject ARCoreRoot;
 
     public SnackbarCanvasController snackbarCanvasController;
 
 	// Use this for initialization
 	void Start () {
-		
+        Debug.Log("asdf");
+        ARCoreRoot.SetActive(true);
 	}
 	
 	// Update is called once per frame
