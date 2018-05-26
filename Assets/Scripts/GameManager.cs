@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
     private GameObject m_PlayerUFO;
     private GameObject m_PlayerBodyguard;
 
-    private bool setAnchor = false;
+    private bool isAnchorSet = false;
 
     public event EventHandler GameStarted;
 
@@ -99,19 +99,19 @@ public class GameManager : MonoBehaviour
 
     public void CreateInternetMatch(string matchName)
     {
-        NetworkManager.singleton.matchMaker.CreateMatch(matchName, 2, true, "", "", "", 0, 0, OnInternetMatchCreate);
+        NetworkManager.singleton.matchMaker.CreateMatch(matchName, 5, true, "", "", "", 0, 0, OnInternetMatchCreate);
     }
 	
 	//Update is called every frame.
 	void Update()
 	{
-        if (GameManager.instance.anchor == null || setAnchor)
+        if (GameManager.instance.anchor == null || isAnchorSet)
         {
             return;
         }
 
-        setAnchor = true;
-        //start game
+        isAnchorSet = true;
+
         StartGame();
 	}
 
@@ -122,11 +122,6 @@ public class GameManager : MonoBehaviour
 
     private void StartGame()
     {
-        //GameObject ufo = Instantiate(UFOPrefab, GameManager.instance.anchor.transform);
-        //ufo.transform.localPosition = GameManager.instance.anchor.transform.position;
-
-        GameObject wolf = Instantiate(WolfPrefab, new Vector3(0, 0, 0), Quaternion.identity, GameManager.instance.anchor.transform);
-        wolf.transform.localPosition = new Vector3(0, 0, 0);
         this.OnGameStarted();
     }
 
@@ -135,7 +130,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void OnBodyguardPlayerTypeButtonClicked() {
-        NetworkManager.singleton.matchMaker.ListMatches(0, 1, "default", true, 0, 0, OnInternetMatchList);
+        NetworkManager.singleton.matchMaker.ListMatches(0, 100, "default", true, 0, 0, OnInternetMatchList);
     }
 
     private void OnInternetMatchCreate(bool success, string extendedInfo, MatchInfo matchInfo)
@@ -163,7 +158,7 @@ public class GameManager : MonoBehaviour
         {
             if (matches.Count != 0)
             {
-                Debug.Log("A list of matches was returned ");
+                Debug.Log("A list of matches was returned " + matches.Count);
 
                 //join the last server (just in case there are two...)
                 NetworkManager.singleton.matchMaker.JoinMatch(matches[matches.Count - 1].networkId, "", "", "", 0, 0, OnJoinInternetMatch);
@@ -183,7 +178,7 @@ public class GameManager : MonoBehaviour
     {
         if (success)
         {
-            //Debug.Log("Able to join a match");
+            Debug.Log("Able to join a match");
 
             MatchInfo hostInfo = matchInfo;
             NetworkManager.singleton.StartClient(hostInfo);

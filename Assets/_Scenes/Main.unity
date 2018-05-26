@@ -2357,7 +2357,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CowPrefab: {fileID: 1877955688534642, guid: 64e875d6a0d6d404e8d9294fb4973c62, type: 2}
-  scale: 0.5
   spawnRadius: 3
 --- !u!4 &1944240717
 Transform:
@@ -2490,6 +2489,8 @@ MonoBehaviour:
   m_OnlineScene: 
   m_SpawnPrefabs:
   - {fileID: 1877955688534642, guid: 64e875d6a0d6d404e8d9294fb4973c62, type: 2}
+  - {fileID: 1016288558193740, guid: 31041466b91784255ba0bbd8788859cf, type: 2}
+  - {fileID: 1658541254454910, guid: 87a0d1c974bc645889787af3ad937e1a, type: 2}
   m_CustomConfig: 1
   m_MaxConnections: 2
   m_ConnectionConfig:
@@ -2542,7 +2543,7 @@ MonoBehaviour:
   m_MatchHost: mm.unet.unity3d.com
   m_MatchPort: 443
   matchName: default
-  matchSize: 4
+  matchSize: 5
   isNetworkActive: 0
   matchMaker: {fileID: 0}
 --- !u!4 &1958973538

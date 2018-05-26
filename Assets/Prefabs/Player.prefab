@@ -62,6 +62,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_type: 0
+  WolfPrefab: {fileID: 1658541254454910, guid: 87a0d1c974bc645889787af3ad937e1a, type: 2}
+  UFOPrefab: {fileID: 1016288558193740, guid: 31041466b91784255ba0bbd8788859cf, type: 2}
 --- !u!114 &114671068124784682
 MonoBehaviour:
   m_ObjectHideFlags: 1
