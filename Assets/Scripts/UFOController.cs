@@ -13,8 +13,6 @@ using Input = GoogleARCore.InstantPreviewInput;
 #endif
 
 public class UFOController : NetworkBehaviour {
-
-    private Pose? target = null;
     public GameObject UFOProjectorPrefab;
 
     [HideInInspector]
@@ -31,12 +29,6 @@ public class UFOController : NetworkBehaviour {
         {
             transform.parent = GameManager.instance.anchor.transform;
         }
-
-        TrackableHit hit;
-        if (Frame.Raycast(360, 560, TrackableHitFlags.PlaneWithinPolygon, out hit))
-        {
-            target = hit.Pose;
-        }
 	}
 	private void FixedUpdate()
 	{
@@ -45,10 +37,10 @@ public class UFOController : NetworkBehaviour {
             return;
         }
 
-        if (target != null && !isCatching)
+        if (!isCatching)
         {
             float step = 0.15f * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, ((Pose)target).position, step);
+            transform.position = Vector3.MoveTowards(transform.position, PointerRaycast.GetInstance().CurrentTarget, step);
         }
 	}
 

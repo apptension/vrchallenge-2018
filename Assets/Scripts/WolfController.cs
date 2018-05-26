@@ -15,7 +15,6 @@ public class WolfController : NetworkBehaviour
     public float walkSpeed;
     public float walkThreshold; //min target distance to animate walk
     public float runThreshold;  //min target distance to animate run
-    private Pose target;
 
     // Update is called once per frame
     void Update()
@@ -29,15 +28,9 @@ public class WolfController : NetworkBehaviour
             transform.parent = GameManager.instance.anchor.transform;
         }
 
-        TrackableHit hit;
-        if (Frame.Raycast(360, 560, TrackableHitFlags.PlaneWithinPolygon, out hit))
+        if (!PointerRaycast.GetInstance().CurrentTarget.Equals(null))
         {
-            target = hit.Pose;
-        }
-
-        if (!target.Equals(null))
-        {
-            this._WalkTo(target.position);
+            this._WalkTo(PointerRaycast.GetInstance().CurrentTarget);
         }
     }
 
