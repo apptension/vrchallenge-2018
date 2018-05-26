@@ -69,9 +69,8 @@ public class GameManager : MonoBehaviour
         GameObject ufo = Instantiate(UFOPrefab);
         ufo.transform.position = GameManager.instance.anchor.transform.position;
 
-        GameObject wolf = Instantiate(WolfPrefab);
-        wolf.transform.position = GameManager.instance.anchor.transform.position;
-
+        GameObject wolf = Instantiate(WolfPrefab, new Vector3(0, 0, 0), Quaternion.identity, GameManager.instance.anchor.transform);
+        wolf.transform.localPosition = new Vector3(0, 0, 0);
         this.OnGameStarted();
     }
 }

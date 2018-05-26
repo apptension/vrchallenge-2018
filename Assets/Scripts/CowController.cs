@@ -5,7 +5,7 @@ using UnityEngine;
 public class CowController : MonoBehaviour {
     public GameObject CowPrefab;
     public float scale;
-    public int spawnRadius;
+    public float spawnRadius;
 
     private int m_cowsCount = 5;
 
@@ -22,8 +22,11 @@ public class CowController : MonoBehaviour {
     }
 
     void SpawnCow() {
-        var position = GameManager.instance.anchor.transform.position + this._GetRandomSpawnPosition();
-        Instantiate(this.CowPrefab, position, this._GetRandomRotation());
+        var position = this._GetRandomSpawnPosition();
+        var cowObject = Instantiate(this.CowPrefab, new Vector3(0, 0, 0), this._GetRandomRotation());
+        cowObject.transform.parent = GameManager.instance.anchor.transform;
+        cowObject.transform.localPosition = this._GetRandomSpawnPosition();
+
     }
 
 	// Use this for initialization
