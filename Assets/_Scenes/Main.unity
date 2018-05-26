@@ -1112,6 +1112,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CowPrefab: {fileID: 1877955688534642, guid: 64e875d6a0d6d404e8d9294fb4973c62, type: 2}
   spawnRadius: 1
+  spawnNext: 1
 --- !u!4 &1944240717
 Transform:
   m_ObjectHideFlags: 0

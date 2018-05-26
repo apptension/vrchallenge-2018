@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UFOProjectorCylinder : MonoBehaviour {
     public UFOController UFOController;
+    private bool StartCatching = false;
 
 	private void OnTriggerStay(Collider other)
 	{

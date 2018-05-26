@@ -919,6 +919,7 @@ GameObject:
   - component: {fileID: 114347899881089436}
   - component: {fileID: 114383166451435666}
   - component: {fileID: 135937221112056658}
+  - component: {fileID: 114115061465027070}
   m_Layer: 0
   m_Name: Cow
   m_TagString: Target
@@ -1639,7 +1640,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1877955688534642}
   m_LocalRotation: {x: -0, y: 0.9668957, z: -0, w: -0.25517192}
-  m_LocalPosition: {x: -1.407, y: 0, z: -5.567}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.03, y: 0.03, z: 0.03}
   m_Children:
   - {fileID: 4660975758455786}
@@ -2139,6 +2140,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114115061465027070
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1877955688534642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5caf45969e80d4b639049ce8f7383acb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabEffect: {fileID: 1785690431655328, guid: c3ce312c2d60a4c6cb7e1a18f31334f5,
+    type: 2}
 --- !u!114 &114347899881089436
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2148,8 +2162,8 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d66a76c9ed584db2b523a2915b49b9d, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114355452266166282
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2170,8 +2184,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: adb7d7f7129f840d1ab1e64f847255b1, type: 3}
-  m_Name:
-  m_EditorClassIdentifier:
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114621657952543236
 MonoBehaviour:
   m_ObjectHideFlags: 1
