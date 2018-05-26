@@ -5,28 +5,40 @@ using UnityEngine;
 public class RunAwayController : MonoBehaviour {
     public float runSpeed;
     private bool isCatching = true;
+    private float m_rotateSpeed = .001f;
+	
+    private bool IsWolf(Collider other) {
+        return other.tag == "Wolf";
+    }
+
+    private Transform CowTransform {
+        get { return transform.parent; }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (isCatching) {
-            return;
+                    return;
+                }
+        if (IsWolf(other)) {
+            GetComponentInParent<AnimationControl>().SetAnimation("isRunning");
         }
-        this.GetComponentInParent<AnimationControl>().SetAnimation("isRunning");
     }
 
     void OnTriggerStay(Collider other) {
-        if (isCatching)
-        {
-            return;
-        }
-        if (other.tag == "Wolf") {
-            var cowTransform = transform.parent;
-            var runDirection = (cowTransform.position - other.transform.position).normalized;
-            runDirection.y = 0;
+        if (isCatching) return;
 
-            cowTransform.Translate(runDirection * this.runSpeed * Time.deltaTime, Space.World);
-            cowTransform.LookAt(runDirection + cowTransform.position);
+        if (IsWolf(other)) {
+            var runDirection = RunAwayFromWolf(other);
+            CowTransform.Translate(runDirection * this.runSpeed * Time.deltaTime, Space.World);
+            CowTransform.LookAt(runDirection + CowTransform.position);
         }
+    }
+
+    private Vector3 RunAwayFromWolf(Collider wolf) {
+        var runDirection = (CowTransform.position - wolf.transform.position).normalized;
+        runDirection.y = 0;
+        return runDirection;
     }
 
     private void OnTriggerExit(Collider other)
