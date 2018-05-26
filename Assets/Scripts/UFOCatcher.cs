@@ -10,7 +10,6 @@ public class UFOCatcher : MonoBehaviour {
         if (other.tag == "Target" && UFOController.isCatching)
         {
             Destroy(other.gameObject);
-            Debug.Log("o, milka!");
         }
     }
 }
