@@ -19,7 +19,7 @@ public class WolfController : MonoBehaviour
 
         if (!PointerRaycast.GetInstance().CurrentTarget.Equals(null))
         {
-            this._WalkTo(PointerRaycast.GetInstance().CurrentTarget);
+            this._WalkTo(PointerRaycast.GetInstance().CurrentTarget.Value);
         }
     }
 

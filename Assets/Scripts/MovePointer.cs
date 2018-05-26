@@ -12,8 +12,8 @@ public class MovePointer : MonoBehaviour {
         if (target == null) return;
 
         if (!m_pointer) {
-            m_pointer = Instantiate(movePointerPrefab, target, Quaternion.identity);
+            m_pointer = Instantiate(movePointerPrefab, target.Value, Quaternion.identity);
         }
-        m_pointer.transform.position = target;
+        m_pointer.transform.position = target.Value;
 	}
 }

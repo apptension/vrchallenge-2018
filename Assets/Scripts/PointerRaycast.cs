@@ -24,7 +24,7 @@ public class PointerRaycast : MonoBehaviour {
         }
 	}
 
-    public Vector3 CurrentTarget {
-        get { return (Vector3)m_currentTarget; }
+    public Vector3? CurrentTarget {
+        get { return m_currentTarget; }
     }
 }

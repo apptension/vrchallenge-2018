@@ -23,7 +23,7 @@ public class ArenaController : MonoBehaviour {
     void FixedUpdate () {
         if (m_isAnchored) return;
 
-        var center = PointerRaycast.GetInstance().CurrentTarget;
+        var center = PointerRaycast.GetInstance().CurrentTarget.Value;
 
         if (center != null) {
             if (m_Arena != null)

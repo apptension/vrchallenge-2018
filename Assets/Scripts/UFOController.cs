@@ -20,7 +20,7 @@ public class UFOController : MonoBehaviour {
         if (!isCatching)
         {
             float step = 0.15f * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, PointerRaycast.GetInstance().CurrentTarget, step);
+            transform.position = Vector3.MoveTowards(transform.position, PointerRaycast.GetInstance().CurrentTarget.Value, step);
         }
 	}
 
