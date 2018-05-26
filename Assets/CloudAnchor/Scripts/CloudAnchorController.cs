@@ -61,24 +61,6 @@ namespace GoogleARCore.Examples.CloudAnchor
         /// </summary>
         public GameObject ARCoreAndyAndroidPrefab;
 
-        [Header("ARKit")]
-
-        /// <summary>
-        /// The root for ARKit-specific GameObjects in the scene.
-        /// </summary>
-        public GameObject ARKitRoot;
-
-        /// <summary>
-        /// The first-person camera used to render the AR background texture for ARKit.
-        /// </summary>
-        public Camera ARKitFirstPersonCamera;
-
-        /// <summary>
-        /// An Andy Android model to visually represent anchors in the scene; this uses
-        /// standard diffuse shaders.
-        /// </summary>
-        public GameObject ARKitAndyAndroidPrefab;
-
         /// <summary>
         /// The loopback ip address.
         /// </summary>
@@ -137,12 +119,6 @@ namespace GoogleARCore.Examples.CloudAnchor
             if (Application.platform != RuntimePlatform.IPhonePlayer)
             {
                 ARCoreRoot.SetActive(true);
-                ARKitRoot.SetActive(false);
-            }
-            else
-            {
-                ARCoreRoot.SetActive(false);
-                ARKitRoot.SetActive(true);
             }
 
             _ResetStatus();
@@ -178,14 +154,6 @@ namespace GoogleARCore.Examples.CloudAnchor
                 {
                     m_LastPlacedAnchor = hit.Trackable.CreateAnchor(hit.Pose);
                     GameManager.instance.anchor = m_LastPlacedAnchor;
-                }
-            }
-            else
-            {
-                Pose hitPose;
-                if (m_ARKit.RaycastPlane(ARKitFirstPersonCamera, touch.position.x, touch.position.y, out hitPose))
-                {
-                    m_LastPlacedAnchor = m_ARKit.CreateAnchor(hitPose);
                 }
             }
 
@@ -345,8 +313,7 @@ namespace GoogleARCore.Examples.CloudAnchor
         /// <returns>The platform-specific Andy the android prefab.</returns>
         private GameObject _GetAndyPrefab()
         {
-            return Application.platform != RuntimePlatform.IPhonePlayer ?
-                ARCoreAndyAndroidPrefab : ARKitAndyAndroidPrefab;
+            return ARCoreAndyAndroidPrefab;
         }
 
         /// <summary>

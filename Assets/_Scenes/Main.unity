@@ -1002,7 +1002,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 3
   anchor: {fileID: 0}
-  UFOPrefab: {fileID: 1086815379904488, guid: 94ec14eb55b0b4a7db504d0edd1ae2c5, type: 2}
+  UFOPrefab: {fileID: 1016288558193740, guid: 31041466b91784255ba0bbd8788859cf, type: 2}
   WolfPrefab: {fileID: 1658541254454910, guid: 87a0d1c974bc645889787af3ad937e1a, type: 2}
 --- !u!4 &967652500
 Transform:
@@ -1215,10 +1215,6 @@ MonoBehaviour:
   UIController: {fileID: 370638273}
   ARCoreRoot: {fileID: 258007172}
   ARCoreAndyAndroidPrefab: {fileID: 1190091649889860, guid: 242a320930b81430ba610f94f9b760c8,
-    type: 2}
-  ARKitRoot: {fileID: 0}
-  ARKitFirstPersonCamera: {fileID: 0}
-  ARKitAndyAndroidPrefab: {fileID: 1190091649889860, guid: 63e9325810cb14b9e8e0590d57d87afb,
     type: 2}
 --- !u!4 &1269151152
 Transform:

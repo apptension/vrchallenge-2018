@@ -17,8 +17,6 @@ public class RunAwayController : MonoBehaviour {
 
     void OnTriggerStay(Collider other) {
         if (other.tag == "Wolf") {
-            Debug.Log("Oh no! It's the wolf!");
-
             var cowTransform = transform.parent;
             this.GetComponentInParent< AnimationControl > ().SetAnimation("isRunning");
             var runDirection = (cowTransform.position - other.transform.position).normalized;
