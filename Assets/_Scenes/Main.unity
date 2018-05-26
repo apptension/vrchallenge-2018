@@ -2310,7 +2310,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CowPrefab: {fileID: 1877955688534642, guid: 64e875d6a0d6d404e8d9294fb4973c62, type: 2}
-  scale: 0.5
   spawnRadius: 0.5
 --- !u!4 &1944240717
 Transform:

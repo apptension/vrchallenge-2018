@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CowController : MonoBehaviour {
     public GameObject CowPrefab;
-    public float scale;
     public float spawnRadius;
 
     private int m_cowsCount = 5;
