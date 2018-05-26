@@ -24,6 +24,7 @@ public class RunAwayController : MonoBehaviour {
         if (other.tag == "Wolf") {
             var cowTransform = transform.parent;
             var runDirection = (cowTransform.position - other.transform.position).normalized;
+            runDirection.y = 0;
 
             cowTransform.Translate(runDirection * this.runSpeed * Time.deltaTime, Space.World);
             cowTransform.LookAt(runDirection + cowTransform.position);

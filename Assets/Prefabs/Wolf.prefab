@@ -2907,6 +2907,8 @@ GameObject:
   - component: {fileID: 114663720745194656}
   - component: {fileID: 54847566302810776}
   - component: {fileID: 135516929598442174}
+  - component: {fileID: 114119106881543664}
+  - component: {fileID: 114187573324840664}
   m_Layer: 0
   m_Name: Wolf
   m_TagString: Wolf
@@ -8962,6 +8964,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114119106881543664
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1658541254454910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd04a015076a04976b152119e5b89b00, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  runSpeed: 0.2
+  walkSpeed: 0.05
+  walkThreshold: 0.01
+  runThreshold: 0.15
+--- !u!114 &114187573324840664
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1658541254454910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5811e0a4b5f2774438e801c3403fd6c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114381441147646674
 MonoBehaviour:
   m_ObjectHideFlags: 1
