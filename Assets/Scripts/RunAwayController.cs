@@ -4,23 +4,21 @@ using UnityEngine;
 
 public class RunAwayController : MonoBehaviour {
     public float runSpeed;
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private bool isCatching = true;
 
     private void OnTriggerEnter(Collider other)
     {
+        if (isCatching) {
+            return;
+        }
         this.GetComponentInParent<AnimationControl>().SetAnimation("isRunning");
     }
 
     void OnTriggerStay(Collider other) {
+        if (isCatching)
+        {
+            return;
+        }
         if (other.tag == "Wolf") {
             var cowTransform = transform.parent;
             var runDirection = (cowTransform.position - other.transform.position).normalized;
@@ -33,7 +31,16 @@ public class RunAwayController : MonoBehaviour {
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("Uff. Wolf is gone.");
+        if (isCatching)
+        {
+            return;
+        }
         this.GetComponentInParent<AnimationControl>().SetAnimationIdle();
+    }
+
+    public void SetIsCatching()
+    {
+        isCatching = true;
+        this.GetComponentInParent<AnimationControl>().SetAnimation("isRunning");
     }
 }

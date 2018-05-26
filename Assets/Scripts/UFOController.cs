@@ -15,7 +15,9 @@ public class UFOController : MonoBehaviour {
 
     private Pose? target = null;
     public GameObject UFOProjectorPrefab;
-    private bool isCatching = false;
+
+    [HideInInspector]
+    public bool isCatching = false;
 
 	// Update is called once per frame
 	void Update ()
@@ -37,14 +39,16 @@ public class UFOController : MonoBehaviour {
 
     public void CatchAnimal()
     {
-        GameObject ufoProjector = Instantiate(UFOProjectorPrefab, transform);
-        Destroy(ufoProjector, 5f);
-        Invoke("OnDestroyUFOPRoject", 3f);
+        if (!isCatching) {
+            isCatching = true;
+            GameObject ufoProjector = Instantiate(UFOProjectorPrefab, transform);
+            Destroy(ufoProjector, 5f);
+            Invoke("OnDestroyUFOPRoject", 3f);
+        }
     }
 
     private void OnDestroyUFOPRoject()
     {
-        Debug.Log("KURWA NIE DZIAŁA");
-        isCatching = true;
+        isCatching = false;
     }
 }
