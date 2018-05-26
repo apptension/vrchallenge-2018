@@ -14,6 +14,5 @@ public class CustomNetworkManager : NetworkManager
         NetworkServer.AddPlayerForConnection(conn, player, playerControllerId);
 
         Debug.Log("Client has requested to get his player added to the game");
-
     }
 }

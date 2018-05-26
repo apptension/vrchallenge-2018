@@ -7,8 +7,9 @@ using UnityEngine.UI;
 using GoogleARCore.Examples.CloudAnchor;
 
 using Input = GoogleARCore.InstantPreviewInput;
+using UnityEngine.Networking;
 
-public class WolfController : MonoBehaviour
+public class WolfController : NetworkBehaviour
 {
     public float runSpeed;
     public float walkSpeed;
@@ -19,6 +20,10 @@ public class WolfController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!isLocalPlayer) {
+            return;
+        }
+
         TrackableHit hit;
         if (Frame.Raycast(360, 560, TrackableHitFlags.PlaneWithinPolygon, out hit))
         {

@@ -2148,8 +2148,8 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4d66a76c9ed584db2b523a2915b49b9d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!114 &114355452266166282
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2170,8 +2170,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: adb7d7f7129f840d1ab1e64f847255b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
 --- !u!114 &114621657952543236
 MonoBehaviour:
   m_ObjectHideFlags: 1

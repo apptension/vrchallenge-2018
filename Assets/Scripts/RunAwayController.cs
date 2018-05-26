@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RunAwayController : MonoBehaviour {
     public float runSpeed;
+    private bool isCatching = true;
     private float m_rotateSpeed = .001f;
 	
     private bool IsWolf(Collider other) {
@@ -16,12 +17,17 @@ public class RunAwayController : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
+        if (isCatching) {
+                    return;
+                }
         if (IsWolf(other)) {
             GetComponentInParent<AnimationControl>().SetAnimation("isRunning");
         }
     }
 
     void OnTriggerStay(Collider other) {
+        if (isCatching) return;
+
         if (IsWolf(other)) {
             var runDirection = RunAwayFromWolf(other);
             CowTransform.Translate(runDirection * this.runSpeed * Time.deltaTime, Space.World);
@@ -37,6 +43,16 @@ public class RunAwayController : MonoBehaviour {
 
     private void OnTriggerExit(Collider other)
     {
-        GetComponentInParent<AnimationControl>().SetAnimationIdle();
+        if (isCatching)
+        {
+            return;
+        }
+        this.GetComponentInParent<AnimationControl>().SetAnimationIdle();
+    }
+
+    public void SetIsCatching()
+    {
+        isCatching = true;
+        this.GetComponentInParent<AnimationControl>().SetAnimation("isRunning");
     }
 }

@@ -1,4 +1,4 @@
-﻿//-----------------------------------------------------------------------
+﻿﻿//-----------------------------------------------------------------------
 // <copyright file="CloudAnchorController.cs" company="Google">
 //
 // Copyright 2018 Google Inc. All Rights Reserved.
@@ -61,6 +61,24 @@ namespace GoogleARCore.Examples.CloudAnchor
         /// </summary>
         public GameObject ARCoreAndyAndroidPrefab;
 
+        [Header("ARKit")]
+
+        /// <summary>
+        /// The root for ARKit-specific GameObjects in the scene.
+        /// </summary>
+        public GameObject ARKitRoot;
+
+        /// <summary>
+        /// The first-person camera used to render the AR background texture for ARKit.
+        /// </summary>
+        public Camera ARKitFirstPersonCamera;
+
+        /// <summary>
+        /// An Andy Android model to visually represent anchors in the scene; this uses
+        /// standard diffuse shaders.
+        /// </summary>
+        public GameObject ARKitAndyAndroidPrefab;
+
         /// <summary>
         /// The loopback ip address.
         /// </summary>
@@ -116,11 +134,6 @@ namespace GoogleARCore.Examples.CloudAnchor
         /// </summary>
         public void Start()
         {
-            if (Application.platform != RuntimePlatform.IPhonePlayer)
-            {
-                ARCoreRoot.SetActive(true);
-            }
-
             _ResetStatus();
         }
 
@@ -131,21 +144,15 @@ namespace GoogleARCore.Examples.CloudAnchor
         {
             _UpdateApplicationLifecycle();
 
-            // If we are not in hosting mode or the user has already placed an anchor then the update
-            // is complete.
-            if (m_CurrentMode != ApplicationMode.Hosting || m_LastPlacedAnchor != null)
-            {
-                return;
-            }
 
-            // If the player has not touched the screen then the update is complete.
+            //// If the player has not touched the screen then the update is complete.
             Touch touch;
             if (Input.touchCount < 1 || (touch = Input.GetTouch(0)).phase != TouchPhase.Began)
             {
                 return;
             }
 
-            // Raycast against the location the player touched to search for planes.
+            //// Raycast against the location the player touched to search for planes.
             if (Application.platform != RuntimePlatform.IPhonePlayer)
             {
                 TrackableHit hit;
@@ -156,22 +163,14 @@ namespace GoogleARCore.Examples.CloudAnchor
                     GameManager.instance.anchor = m_LastPlacedAnchor;
                 }
             }
-
-            if (m_LastPlacedAnchor != null)
-            {
-                //// Instantiate Andy model at the hit pose.
-                //var andyObject = Instantiate(_GetAndyPrefab(), m_LastPlacedAnchor.transform.position,
-                //    m_LastPlacedAnchor.transform.rotation);
-
-                //// Compensate for the hitPose rotation facing away from the raycast (i.e. camera).
-                //andyObject.transform.Rotate(0, k_ModelRotation, 0, Space.Self);
-
-                //// Make Andy model a child of the anchor.
-                //andyObject.transform.parent = m_LastPlacedAnchor.transform;
-
-                // Save cloud anchor.
-                _HostLastPlacedAnchor();
-            }
+            //else
+            //{
+            //    Pose hitPose;
+            //    if (m_ARKit.RaycastPlane(ARKitFirstPersonCamera, touch.position.x, touch.position.y, out hitPose))
+            //    {
+            //        m_LastPlacedAnchor = m_ARKit.CreateAnchor(hitPose);
+            //    }
+            //}
         }
 
         /// <summary>
@@ -304,7 +303,6 @@ namespace GoogleARCore.Examples.CloudAnchor
             }
 
             m_LastResolvedAnchor = null;
-            UIController.ShowReadyMode();
         }
 
         /// <summary>
@@ -313,7 +311,8 @@ namespace GoogleARCore.Examples.CloudAnchor
         /// <returns>The platform-specific Andy the android prefab.</returns>
         private GameObject _GetAndyPrefab()
         {
-            return ARCoreAndyAndroidPrefab;
+            return Application.platform != RuntimePlatform.IPhonePlayer ?
+                ARCoreAndyAndroidPrefab : ARKitAndyAndroidPrefab;
         }
 
         /// <summary>
