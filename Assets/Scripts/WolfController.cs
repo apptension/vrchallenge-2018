@@ -1,15 +1,8 @@
-﻿using System.Collections.Generic;
-using GoogleARCore;
-using GoogleARCore.CrossPlatform;
-using GoogleARCore.Examples.Common;
+﻿using GoogleARCore;
 using UnityEngine;
-using UnityEngine.UI;
-using GoogleARCore.Examples.CloudAnchor;
 
-using Input = GoogleARCore.InstantPreviewInput;
-using UnityEngine.Networking;
 
-public class WolfController : NetworkBehaviour
+public class WolfController : MonoBehaviour
 {
     public float runSpeed;
     public float walkSpeed;
@@ -19,10 +12,6 @@ public class WolfController : NetworkBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isLocalPlayer) {
-            return;
-        }
-
         if (GameManager.instance.anchor != null)
         {
             transform.parent = GameManager.instance.anchor.transform;
@@ -68,7 +57,6 @@ public class WolfController : NetworkBehaviour
 
     private void Start()
     {
-        GameManager.instance.PlayerBodyguard = this.gameObject;
         GameManager.instance.GameStarted += HandleGameStarted;
     }
 
