@@ -9,6 +9,7 @@ public class UFOCatcher : MonoBehaviour {
     {
         if (other.tag == "Target" && UFOController.isCatching)
         {
+            GameManager.instance.IncrementPlayerScore();
             Destroy(other.gameObject);
         }
     }

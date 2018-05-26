@@ -9,7 +9,11 @@ public class GameManager : MonoBehaviour
     public GameObject UFOPrefab;
     public GameObject WolfPrefab;
 
+
     public GameObject startGameMenu;
+
+    private int m_playerScore = 0;
+    private int m_enemyScore = 0;
 
     private GameObject m_PlayerUFO;
     private GameObject m_PlayerBodyguard;
@@ -18,9 +22,13 @@ public class GameManager : MonoBehaviour
 
     public event EventHandler GameStarted;
 
-    public SnackbarCanvasController snackbarCanvasController;
+    public GameUIManager gameUI;
 
     public CloudAnchorManager cloudAnchorManager;
+
+    public int PlayerScore { get { return m_playerScore; }}
+
+    public int EnemyScore { get { return m_enemyScore; } }
 
     protected virtual void OnGameStarted() {
         if (GameStarted != null)
@@ -64,14 +72,14 @@ public class GameManager : MonoBehaviour
 	//Update is called every frame.
 	void Update()
 	{
-        if (GameManager.instance.anchor == null || isAnchorSet)
+        gameUI.playerScoreText.text = m_playerScore.ToString();
+        gameUI.enemyScoreText.text = m_enemyScore.ToString();
+
+        if (GameManager.instance.anchor != null && !isAnchorSet)
         {
-            return;
+            isAnchorSet = true;
+            StartGame();
         }
-
-        isAnchorSet = true;
-
-        StartGame();
 	}
 
     private void OnDestroy()
@@ -86,5 +94,15 @@ public class GameManager : MonoBehaviour
 
     public void OnStartButtonClicked() {
         startGameMenu.SetActive(false);
+        gameUI.gameObject.SetActive(true);
+    }
+
+    public void IncrementPlayerScore() {
+        m_playerScore += 1;
+    }
+
+    public void IncrementEnemyScore()
+    {
+        m_enemyScore += 1;
     }
 }

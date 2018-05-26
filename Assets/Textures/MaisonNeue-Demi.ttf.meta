@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 8b5ed6bbd25d243aea013e7064c79fac
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Maison Neue
+  fontNames:
+  - Maison Neue
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: f3f4c0c7e867f4003afd89c84fc26166, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

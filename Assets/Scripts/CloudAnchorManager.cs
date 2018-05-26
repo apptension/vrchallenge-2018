@@ -17,7 +17,7 @@ public class CloudAnchorManager : MonoBehaviour {
 
     public GameObject ARCoreRoot;
 
-    public SnackbarCanvasController snackbarCanvasController;
+    public GameUIManager gameUI;
 
 	// Use this for initialization
 	void Start () {
