@@ -744,9 +744,9 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.1
   apiCompatibilityLevel: 2
-  cloudProjectId: e4662ee2-33ee-40b9-9920-5029f97bed47
+  cloudProjectId: 8e140a84-de09-420f-b63c-3f1e1ea95343
   projectName: vrchallenge2018
-  organizationId: unity_cruingtouu4mug
+  organizationId: xeor
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0

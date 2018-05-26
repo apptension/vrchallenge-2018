@@ -48,7 +48,7 @@ public class UFOController : NetworkBehaviour {
             isCatching = true;
             GameObject ufoProjector = Instantiate(UFOProjectorPrefab, transform);
             Destroy(ufoProjector, 5f);
-            Invoke("OnDestroyUFOPRoject", 3f);
+            Invoke("OnDestroyUFOPRoject", 3.5f);
         }
     }
 

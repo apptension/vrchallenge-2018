@@ -55,4 +55,12 @@ public class RunAwayController : MonoBehaviour {
         isCatching = true;
         this.GetComponentInParent<AnimationControl>().SetAnimation("isRunning");
     }
+
+    public void StopCatching()
+    {
+        isCatching = false;
+        this.GetComponentInParent<AnimationControl>().SetAnimationIdle();
+        transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+        transform.rotation = Quaternion.identity;
+    }
 }
