@@ -11,42 +11,37 @@ using Input = GoogleARCore.InstantPreviewInput;
 public class ArenaController : MonoBehaviour {
     public GameObject arenaPrefab;
 
-    private Vector3? m_target = null;
     private GameObject m_Arena;
     private bool m_isAnchored;
 
 	// Use this for initialization
     void Start () {
+        GameManager.instance.GameStarted += HandleGameStarted;
 	}
-	
-    Vector3? _UpdateCentralPoint() {
-        TrackableHit hit;
-        if (Frame.Raycast(360, 560, TrackableHitFlags.PlaneWithinPolygon, out hit)) {
-            if (m_target == null) {
-                m_Arena = Instantiate(arenaPrefab);
-            }
-            m_target = hit.Pose.position;
-        }
 
-        return m_target;
-    }
-
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void FixedUpdate () {
         if (m_isAnchored) return;
 
-        this._UpdateCentralPoint();
-        if (m_target != null && m_Arena != null) {
-            m_Arena.transform.position = (Vector3)m_target;
-        }
+        var center = PointerRaycast.GetInstance().CurrentTarget;
 
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
-        {
-            _AnchorArea();
+        if (center != null) {
+            if (m_Arena != null)
+            {
+                m_Arena.transform.position = (Vector3)center;
+            }
+            else {
+                m_Arena = Instantiate(arenaPrefab, center, Quaternion.identity);
+            }
         }
 	}
 
     void _AnchorArea() {
         this.m_isAnchored = true;
+    }
+
+    void HandleGameStarted(object sender, System.EventArgs e)
+    {
+        _AnchorArea();
     }
 }

@@ -15,21 +15,12 @@ public class UFOController : MonoBehaviour {
     [HideInInspector]
     public bool isCatching = false;
 
-	// Update is called once per frame
-	void Update ()
-    {
-        TrackableHit hit;
-        if (Frame.Raycast(360, 560, TrackableHitFlags.PlaneWithinPolygon, out hit))
-        {
-            target = hit.Pose;
-        }
-	}
 	private void FixedUpdate()
 	{
-        if (target != null && !isCatching)
+        if (!isCatching)
         {
             float step = 0.15f * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(transform.position, ((Pose)target).position, step);
+            transform.position = Vector3.MoveTowards(transform.position, PointerRaycast.GetInstance().CurrentTarget, step);
         }
 	}
 
