@@ -5,13 +5,14 @@ using GoogleARCore.Examples.Common;
 using UnityEngine;
 using UnityEngine.UI;
 using GoogleARCore.Examples.CloudAnchor;
+using UnityEngine.Networking;
 
 #if UNITY_EDITOR
 // Set up touch input propagation while using Instant Preview in the editor.
 using Input = GoogleARCore.InstantPreviewInput;
 #endif
 
-public class UFOController : MonoBehaviour {
+public class UFOController : NetworkBehaviour {
 
     private Pose? target = null;
     public GameObject UFOProjectorPrefab;
@@ -22,6 +23,10 @@ public class UFOController : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
+        if (isLocalPlayer) {
+            return;
+        }
+
         TrackableHit hit;
         if (Frame.Raycast(360, 560, TrackableHitFlags.PlaneWithinPolygon, out hit))
         {
