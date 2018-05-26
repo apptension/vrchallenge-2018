@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
             startGameMenu.SetActive(false);
         }
     }
-	
+
 	//Awake is always called before any Start functions
 	void Awake()
 	{
@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
 	//Initializes the game for each level.
 	void InitGame()
 	{
-        
+
 	}
 
     private void Start()

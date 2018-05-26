@@ -11,6 +11,7 @@
 */Temp/
 */Builds/
 *.DS_Store
+.idea/*
 [Bb]uild
 
 [Ll]ibrary/
