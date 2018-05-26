@@ -915,6 +915,8 @@ GameObject:
   - component: {fileID: 82504522934865818}
   - component: {fileID: 114844925651992712}
   - component: {fileID: 114806128264653360}
+  - component: {fileID: 114204341948866966}
+  - component: {fileID: 114260872669888032}
   m_Layer: 0
   m_Name: Cow
   m_TagString: Untagged
@@ -2120,6 +2122,59 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114204341948866966
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1877955688534642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 100
+    i1: 232
+    i2: 117
+    i3: 214
+    i4: 160
+    i5: 214
+    i6: 212
+    i7: 4
+    i8: 232
+    i9: 217
+    i10: 41
+    i11: 79
+    i12: 180
+    i13: 151
+    i14: 60
+    i15: 98
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
+--- !u!114 &114260872669888032
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1877955688534642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 4
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!114 &114355452266166282
 MonoBehaviour:
   m_ObjectHideFlags: 1

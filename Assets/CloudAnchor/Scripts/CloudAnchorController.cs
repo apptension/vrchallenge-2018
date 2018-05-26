@@ -134,17 +134,6 @@ namespace GoogleARCore.Examples.CloudAnchor
         /// </summary>
         public void Start()
         {
-            if (Application.platform != RuntimePlatform.IPhonePlayer)
-            {
-                ARCoreRoot.SetActive(true);
-                ARKitRoot.SetActive(false);
-            }
-            else
-            {
-                ARCoreRoot.SetActive(false);
-                ARKitRoot.SetActive(true);
-            }
-
             _ResetStatus();
         }
 
@@ -155,21 +144,15 @@ namespace GoogleARCore.Examples.CloudAnchor
         {
             _UpdateApplicationLifecycle();
 
-            // If we are not in hosting mode or the user has already placed an anchor then the update
-            // is complete.
-            if (m_CurrentMode != ApplicationMode.Hosting || m_LastPlacedAnchor != null)
-            {
-                return;
-            }
 
-            // If the player has not touched the screen then the update is complete.
+            //// If the player has not touched the screen then the update is complete.
             Touch touch;
             if (Input.touchCount < 1 || (touch = Input.GetTouch(0)).phase != TouchPhase.Began)
             {
                 return;
             }
 
-            // Raycast against the location the player touched to search for planes.
+            //// Raycast against the location the player touched to search for planes.
             if (Application.platform != RuntimePlatform.IPhonePlayer)
             {
                 TrackableHit hit;
@@ -180,30 +163,14 @@ namespace GoogleARCore.Examples.CloudAnchor
                     GameManager.instance.anchor = m_LastPlacedAnchor;
                 }
             }
-            else
-            {
-                Pose hitPose;
-                if (m_ARKit.RaycastPlane(ARKitFirstPersonCamera, touch.position.x, touch.position.y, out hitPose))
-                {
-                    m_LastPlacedAnchor = m_ARKit.CreateAnchor(hitPose);
-                }
-            }
-
-            if (m_LastPlacedAnchor != null)
-            {
-                //// Instantiate Andy model at the hit pose.
-                //var andyObject = Instantiate(_GetAndyPrefab(), m_LastPlacedAnchor.transform.position,
-                //    m_LastPlacedAnchor.transform.rotation);
-
-                //// Compensate for the hitPose rotation facing away from the raycast (i.e. camera).
-                //andyObject.transform.Rotate(0, k_ModelRotation, 0, Space.Self);
-
-                //// Make Andy model a child of the anchor.
-                //andyObject.transform.parent = m_LastPlacedAnchor.transform;
-
-                // Save cloud anchor.
-                _HostLastPlacedAnchor();
-            }
+            //else
+            //{
+            //    Pose hitPose;
+            //    if (m_ARKit.RaycastPlane(ARKitFirstPersonCamera, touch.position.x, touch.position.y, out hitPose))
+            //    {
+            //        m_LastPlacedAnchor = m_ARKit.CreateAnchor(hitPose);
+            //    }
+            //}
         }
 
         /// <summary>
@@ -336,7 +303,6 @@ namespace GoogleARCore.Examples.CloudAnchor
             }
 
             m_LastResolvedAnchor = null;
-            UIController.ShowReadyMode();
         }
 
         /// <summary>
