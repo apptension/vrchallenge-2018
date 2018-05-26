@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Target
   - Wolf
+  - Fence
   layers:
   - Default
   - TransparentFX

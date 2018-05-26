@@ -4,36 +4,39 @@ using UnityEngine;
 
 public class RunAwayController : MonoBehaviour {
     public float runSpeed;
-
-	// Use this for initialization
-	void Start () {
-		
-	}
+    private float m_rotateSpeed = .001f;
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private bool IsWolf(Collider other) {
+        return other.tag == "Wolf";
+    }
+
+    private Transform CowTransform {
+        get { return transform.parent; }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
-        this.GetComponentInParent<AnimationControl>().SetAnimation("isRunning");
+        if (IsWolf(other)) {
+            GetComponentInParent<AnimationControl>().SetAnimation("isRunning");
+        }
     }
 
     void OnTriggerStay(Collider other) {
-        if (other.tag == "Wolf") {
-            var cowTransform = transform.parent;
-            var runDirection = (cowTransform.position - other.transform.position).normalized;
-            runDirection.y = 0;
-
-            cowTransform.Translate(runDirection * this.runSpeed * Time.deltaTime, Space.World);
-            cowTransform.LookAt(runDirection + cowTransform.position);
+        if (IsWolf(other)) {
+            var runDirection = RunAwayFromWolf(other);
+            CowTransform.Translate(runDirection * this.runSpeed * Time.deltaTime, Space.World);
+            CowTransform.LookAt(runDirection + CowTransform.position);
         }
+    }
+
+    private Vector3 RunAwayFromWolf(Collider wolf) {
+        var runDirection = (CowTransform.position - wolf.transform.position).normalized;
+        runDirection.y = 0;
+        return runDirection;
     }
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("Uff. Wolf is gone.");
-        this.GetComponentInParent<AnimationControl>().SetAnimationIdle();
+        GetComponentInParent<AnimationControl>().SetAnimationIdle();
     }
 }

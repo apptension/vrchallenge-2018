@@ -8,7 +8,7 @@ using GoogleARCore;
 using Input = GoogleARCore.InstantPreviewInput;
 #endif
 
-public class Arena : MonoBehaviour {
+public class ArenaController : MonoBehaviour {
     public GameObject arenaPrefab;
 
     private Vector3? m_target = null;
