@@ -21,8 +21,13 @@ public class CloudAnchorManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        ARCoreRoot.SetActive(true);
+        //Invoke("SetupARCore", 10f);
 	}
+
+    void SetupARCore()
+    {
+        ARCoreRoot.SetActive(true);
+    }
 	
 	// Update is called once per frame
 	void Update () {
