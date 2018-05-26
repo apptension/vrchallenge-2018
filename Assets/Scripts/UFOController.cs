@@ -18,11 +18,6 @@ public class UFOController : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if (GameManager.instance.anchor != null)
-        {
-            transform.parent = GameManager.instance.anchor.transform;
-        }
-
         TrackableHit hit;
         if (Frame.Raycast(360, 560, TrackableHitFlags.PlaneWithinPolygon, out hit))
         {
@@ -56,10 +51,12 @@ public class UFOController : MonoBehaviour {
     private void Start()
     {
         GameManager.instance.GameStarted += HandleGameStarted;
+        gameObject.SetActive(false);
     }
 
     void HandleGameStarted(object sender, System.EventArgs e)
     {
+        transform.parent = GameManager.instance.anchor.transform;
         transform.localPosition = new Vector3();
         gameObject.SetActive(true);
     }

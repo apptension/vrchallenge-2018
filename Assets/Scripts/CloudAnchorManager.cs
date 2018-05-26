@@ -21,7 +21,6 @@ public class CloudAnchorManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Debug.Log("asdf");
         ARCoreRoot.SetActive(true);
 	}
 	
@@ -29,51 +28,18 @@ public class CloudAnchorManager : MonoBehaviour {
 	void Update () {
         _UpdateApplicationLifecycle();
 
-        //if (isServer) {
-            Touch touch;
-            if (Input.touchCount >= 1 && (touch = Input.GetTouch(0)).phase == TouchPhase.Began)
+        Touch touch;
+        if (Input.touchCount >= 1 && (touch = Input.GetTouch(0)).phase == TouchPhase.Began)
+        {
+            TrackableHit hit;
+            if (Frame.Raycast(touch.position.x, touch.position.y,
+                    TrackableHitFlags.PlaneWithinPolygon, out hit))
             {
-                TrackableHit hit;
-                if (Frame.Raycast(touch.position.x, touch.position.y,
-                        TrackableHitFlags.PlaneWithinPolygon, out hit))
-                {
-                    var anchor = hit.Trackable.CreateAnchor(hit.Pose);
+                var anchor = hit.Trackable.CreateAnchor(hit.Pose);
 
-                    GameManager.instance.anchor = anchor;
-
-                    //XPSession.CreateCloudAnchor(anchor).ThenAction(result =>
-                    //{
-                    //    if (result.Response != CloudServiceResponse.Success)
-                    //    {
-                    //        snackbarCanvasController.SnackbarText.text = string.Format("Failed to host cloud anchor: {0}", result.Response);
-                    //        return;
-                    //    }
-
-                    //    arenaCloudAnchorId = result.Anchor.CloudId;
-                    //    snackbarCanvasController.SnackbarText.text = "Successfully placed cloud anchor! " + arenaCloudAnchorId;
-                    //});
-                }
+                GameManager.instance.anchor = anchor;
             }
-        //} 
-
-
-
-        //if (!isServer && !string.IsNullOrEmpty(arenaCloudAnchorId)) {
-        //    snackbarCanvasController.SnackbarText.text = "Resolving cloud anchor. " + arenaCloudAnchorId;
-
-        //    XPSession.ResolveCloudAnchor(arenaCloudAnchorId).ThenAction((System.Action<CloudAnchorResult>)(result =>
-        //    {
-        //        if (result.Response != CloudServiceResponse.Success)
-        //        {
-        //            snackbarCanvasController.SnackbarText.text = string.Format("Resolving Error: {0}.", result.Response);
-        //            return;
-        //        }
-
-        //        snackbarCanvasController.SnackbarText.text = "Successfully resolved cloud anchor! " + arenaCloudAnchorId;
-
-        //        GameManager.instance.anchor = result.Anchor;
-        //    }));
-        //}
+        }
 	}
 
     private void _UpdateApplicationLifecycle()

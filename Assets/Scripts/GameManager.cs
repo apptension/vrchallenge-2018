@@ -5,7 +5,6 @@ using System;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance = null;              //Static instance of GameManager which allows it to be accessed by any other script.                    //Store a reference to our BoardManager which will set up the level.
-    public int level = 3;                                  //Current level number, expressed in game as "Day 1".
     public Component anchor;
     public GameObject UFOPrefab;
     public GameObject WolfPrefab;
@@ -87,6 +86,5 @@ public class GameManager : MonoBehaviour
 
     public void OnStartButtonClicked() {
         startGameMenu.SetActive(false);
-
     }
 }

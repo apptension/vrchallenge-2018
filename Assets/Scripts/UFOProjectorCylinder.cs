@@ -12,7 +12,10 @@ public class UFOProjectorCylinder : MonoBehaviour {
 
 	private void OnTriggerExit(Collider other)
 	{
-        other.transform.Find("RunCollider").GetComponent<RunAwayController>().StopCatching();
+        if (other.tag == "Target")
+        {
+            other.transform.Find("RunCollider").GetComponent<RunAwayController>().StopCatching();
+        }
 	}
 
 	private void CatchTarget(Collider other) 

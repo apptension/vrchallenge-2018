@@ -426,7 +426,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfbba92ac396f4686abfaa2979157694, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level: 3
   anchor: {fileID: 0}
   UFOPrefab: {fileID: 1016288558193740, guid: 31041466b91784255ba0bbd8788859cf, type: 2}
   WolfPrefab: {fileID: 1658541254454910, guid: 87a0d1c974bc645889787af3ad937e1a, type: 2}
@@ -1169,6 +1168,10 @@ Prefab:
         type: 2}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1016288558193740, guid: 31041466b91784255ba0bbd8788859cf, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
