@@ -22,6 +22,7 @@ public class CloudAnchorManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         //Invoke("SetupARCore", 10f);
+        SetupARCore();
 	}
 
     void SetupARCore()
