@@ -118,6 +118,12 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224750309398014408, guid: dd50f166836434ee6a06b397377384bd,
     type: 2}
   m_PrefabInternal: {fileID: 555402235}
+--- !u!114 &368176961 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114654196200548566, guid: dd50f166836434ee6a06b397377384bd,
+    type: 2}
+  m_PrefabInternal: {fileID: 555402235}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &370638268
 GameObject:
   m_ObjectHideFlags: 0
@@ -1505,6 +1511,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1261799080}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1341972794 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114654196200548566, guid: dd50f166836434ee6a06b397377384bd,
+    type: 2}
+  m_PrefabInternal: {fileID: 583866608}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &1347864965
 GameObject:
   m_ObjectHideFlags: 0
@@ -1839,8 +1851,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SnackbarText: {fileID: 899532223}
-  playerScoreText: {fileID: 0}
-  enemyScoreText: {fileID: 0}
+  playerScoreText: {fileID: 368176961}
+  enemyScoreText: {fileID: 1341972794}
 --- !u!222 &1749718321
 CanvasRenderer:
   m_ObjectHideFlags: 0

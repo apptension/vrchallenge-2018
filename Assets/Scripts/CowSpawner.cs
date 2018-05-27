@@ -3,9 +3,8 @@
 public class CowSpawner : MonoBehaviour {
     public GameObject CowPrefab;
     public float spawnRadius;
-    public float spawnNext = 1f;
 
-    private int m_cowsCount = 5;
+    private int m_cowsCount = 30;
 
     private float _GetCoordWithinRadius() {
         return Random.Range(-this.spawnRadius / 2, this.spawnRadius / 2);
@@ -35,7 +34,7 @@ public class CowSpawner : MonoBehaviour {
         Debug.Log("COWS SPAWNED");
         for (int i = 0; i < this.m_cowsCount; i++)
         {
-            Invoke("SpawnCow", i);
+            Invoke("SpawnCow", i/4.0f);
         }
     }
 }
